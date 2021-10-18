@@ -15,8 +15,8 @@ function App() {
 
   async function getDogData() {
     const resp = await axios.get("http://localhost:5000/dogs");
-    console.log("response", resp);
-    console.log("we are returning:", resp.data)
+    // console.log("response", resp);
+    // console.log("we are returning:", resp.data)
     setDogData(resp.data);
     setIsLoading(false);
   }
