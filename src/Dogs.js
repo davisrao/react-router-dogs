@@ -1,36 +1,36 @@
 import axios from "axios"
-import {useState} from "react"
+import { useState } from "react"
 import Dog from "./Dog";
 
 
-function Dogs(){
+function Dogs({ dogData }) {
     // make a get request to localhost 5000 for dog data
     // display that data on the page
-    const [dogData,setDogData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    // onLoad
+    // const [dogData,setDogData] = useState([]);
+    // const [isLoading, setIsLoading] = useState(true);
+    // // onLoad
 
-    async function getDogData(){
-        const resp = await axios.get("http://localhost:5000/dogs");
-        console.log("response", resp);
-        console.log("we are returning:", resp.data)
-        setDogData(resp.data);
-        setIsLoading(false);
-    }
-    
+    // async function getDogData(){
+    //     const resp = await axios.get("http://localhost:5000/dogs");
+    //     console.log("response", resp);
+    //     console.log("we are returning:", resp.data)
+    //     setDogData(resp.data);
+    //     setIsLoading(false);
+    // }
 
 
-    if (isLoading) {
-        getDogData();
-        return (
-            <h1>Loading...</h1>
-        )
-    }
 
-    return(
+    // if (isLoading) {
+    //     getDogData();
+    //     return (
+    //         <h1>Loading...</h1>
+    //     )
+    // }
+
+    return (
         <div>
-            {console.log({dogData})}
-            {dogData.map(dog => <Dog name={dog.name} img={dog.src} age={dog.age} facts={dog.facts}/>)}
+            {console.log({ dogData })}
+            {dogData.map(dog => <Dog dogData={dogData} />)}
         </div>
     )
 }
