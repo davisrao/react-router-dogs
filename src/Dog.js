@@ -1,7 +1,4 @@
 import { useParams } from "react-router-dom";
-import duke from "./images/duke.jpg";
-import perry from "./images/perry.jpg";
-import whiskey from "./images/whiskey.jpg";
 
 /** Shows information about a single Dog
  * 
@@ -14,28 +11,24 @@ import whiskey from "./images/whiskey.jpg";
  * 
  *  { Dogs, Routes } -> Dog
  */
-function Dog ({ dogData, dogName}) {
+function Dog ({ dogsData, dogName}) {
     const { name } = useParams();
-    const currentDog = (dogName|| name).toLowerCase();
 
-    const dog = dogData.filter(dog => dog.name.toLowerCase() === currentDog);
+    const soughtName = (dogName || name);
+
+    console.log("inside dog component", {dogsData,dogName,name})
+
+    const dog = dogsData.find(dog => dog.name.toLowerCase() === soughtName.toLowerCase());
     
-    let dogImage;
-    if(currentDog === 'whiskey'){
-        dogImage = whiskey;
-    }else if(currentDog === 'perry'){
-        dogImage = perry;
-    }else{
-        dogImage = duke;
-    }
+    const dogImage =`/images/${dog.name}.jpg`;
 
     return (
         <div>
-            <h1>Name: {dog[0].name}</h1>
-            <h2>Age: {dog[0].age}</h2>
-            <img src={dogImage} alt={`a cute dog named ${dog[0].name}`}></img>
+            <h1>Name: {dog.name}</h1>
+            <h2>Age: {dog.age}</h2>
+            <img src={dogImage} alt={`a cute dog named ${dog.name}`}></img>
             <ul><h2>Facts:</h2> 
-                {dog[0].facts.map((fact,i) =>
+                {dog.facts.map((fact,i) =>
                     <li key={i}>{fact}</li>
                 )}
             </ul>

@@ -15,17 +15,23 @@ import Routes from "./Routes";
  *  App -> Routes
  */
 function App() {
-  const [dogData, setDogData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  ///COMMENT: make sure dog data is plural name
+  
+  const [dogsData, setDogsData] = useState([]);
+  const [needsLoading, setNeedsLoading] = useState(true);
+  console.log("app", {dogsData, needsLoading});
 
-  async function getDogData() {
+  async function getDogsData() {
     const resp = await axios.get("http://localhost:5000/dogs");
-    setDogData(resp.data);
-    setIsLoading(false);
+    setDogsData(resp.data);
   }
 
-  if (isLoading) {
-    getDogData();
+  if (needsLoading) {
+    setNeedsLoading(false);
+    getDogsData();
+  }
+
+  if(dogsData.length === 0){
     return (
       <h1>Loading...</h1>
     )
@@ -34,8 +40,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar dogData={dogData} />
-        <Routes dogData={dogData} />
+        <NavBar dogsData={dogsData} />
+        <Routes dogsData={dogsData} />
       </BrowserRouter>
     </div>
   );

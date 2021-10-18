@@ -10,12 +10,12 @@ import Dog from "./Dog";
  * 
  *  Routes -> Dogs
  */
-function Dogs({ dogData }) {
+function Dogs({ dogsData }) {
 
     return (
         <div>
-            {/* {console.log({ dogData })} */}
-            {dogData.map(dog => <Dog dogData={dogData} dogName={dog.name} key={dog.name}/>)}
+            {/* {console.log({ dogsData })} */}
+            {dogsData.map(dog => <Dog dogsData={dogsData} dogName={dog.name} key={dog.name}/>)}
         </div>
     )
 }

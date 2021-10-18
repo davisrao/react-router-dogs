@@ -1,21 +1,21 @@
-import { NavLink, Switch } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import "./NavBar.css";
 
-/** Navigation bar to show in every page */
-function NavBar({ dogData }) {
+/** Navigation bar to show in every page 
+ * 
+ * Props:
+ *  - Dog data [{dog}, {dog},...]
+*/
+function NavBar({ dogsData }) {
+    console.log("NavBar", dogsData);
     return (
         <nav>
-            {console.log("I'm in the NavBar")}
             <NavLink exact to="/dogs">Home</NavLink>
-            {dogData.map(dog => (
+            {dogsData.map(dog => (
                 <NavLink exact to={`/dogs/${dog.src}`} key={dog.name}>
                     {dog.name}
                 </NavLink>
             ))}
-            {/* <NavLink exact to="/"></NavLink>
-            <NavLink exact to="/dogs/whiskey">Whiskey</NavLink>
-            <NavLink exact to="/dogs/perry">Perry</NavLink>
-            <NavLink exact to="/dogs/duke">Duke</NavLink> */}
         </nav>
     );
 };
