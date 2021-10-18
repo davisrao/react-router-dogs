@@ -4,6 +4,12 @@ import { render } from "@testing-library/react";
 import Dog from "./Dog"
 import { MemoryRouter } from "react-router";
 
+// mock useParams only
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useParams: () => ({name: "whiskey"}),
+  }));
+
 const dogsData = [
     {
         "name": "Whiskey",
@@ -37,32 +43,22 @@ const dogsData = [
     }
 ]
 
-test("renders successfully", function () {
-    jest.mock('react-router-dom', () => ({
-        useParams: jest.fn().mockReturnValue({ name: "whiskey"}),
-      }))
-    render(
-        <MemoryRouter>
-            <Dog dogsData={dogsData}/>
-        </MemoryRouter>
-    )
-})
 
 describe("testing Dog component", function () {
-
-
-
-    it("renders successfully", function () {
+    test("renders successfully", function () {
         render(
             <MemoryRouter>
                 <Dog dogsData={dogsData} dogName='whiskey' />
             </MemoryRouter>
         )
     })
-
-
-
-
-
-
+    
+    test("renders successfully", function () {
+        render(
+            <MemoryRouter>
+                <Dog dogsData={dogsData}/>
+            </MemoryRouter>
+        )
+    })
+    
 });
