@@ -12,3 +12,4 @@ function NavBar(){
 };
 
 export default NavBar;
+// mapping over the NavLinks and pass in props
