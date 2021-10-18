@@ -1,0 +1,17 @@
+nav a.active {
+    color: grey;
+
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 2vw;
+
+}
+
+nav {
+    background-color: black;
+    height: 2vw;
+    padding: 2vw;
+}

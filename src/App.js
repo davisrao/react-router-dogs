@@ -6,17 +6,20 @@ import axios from "axios";
 import NavBar from "./NavBar";
 import Routes from "./Routes";
 
+/** App to show Dogs
+ * 
+ *  State:
+ *  - dogData (information about all dogs)
+ *  - isLoading (true/false)
+ * 
+ *  App -> Routes
+ */
 function App() {
-  // make a get request to localhost 5000 for dog data
-  // display that data on the page
   const [dogData, setDogData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // onLoad
 
   async function getDogData() {
     const resp = await axios.get("http://localhost:5000/dogs");
-    // console.log("response", resp);
-    // console.log("we are returning:", resp.data)
     setDogData(resp.data);
     setIsLoading(false);
   }
@@ -31,10 +34,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar dogData={dogData}/>
-        <Routes dogData={dogData}/>
+        <NavBar dogData={dogData} />
+        <Routes dogData={dogData} />
       </BrowserRouter>
-
     </div>
   );
 }
