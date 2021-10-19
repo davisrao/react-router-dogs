@@ -15,7 +15,7 @@ function Dogs({ dogsData }) {
     return (
         <div>
             {/* {console.log({ dogsData })} */}
-            {dogsData.map(dog => <Dog dogsData={dogsData} dogName={dog.name} key={dog.name}/>)}
+            {dogsData.map(dog => <Dog dogData={dog} key={dog.name}/>)}
         </div>
     )
 }

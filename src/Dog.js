@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 
 /** Shows information about a single Dog
  * 
@@ -11,24 +10,17 @@ import { useParams } from "react-router-dom";
  * 
  *  { Dogs, Routes } -> Dog
  */
-function Dog ({ dogsData, dogName}) {
-    const { name } = useParams();
-
-    const soughtName = (dogName || name);
-
-    console.log("inside dog component", {dogsData,dogName,name})
-
-    const dog = dogsData.find(dog => dog.name.toLowerCase() === soughtName.toLowerCase());
+function Dog ({ dogData }) {
     
-    const dogImage =`/images/${dog.name}.jpg`;
+    const dogImage =`/images/${dogData.name}.jpg`;
 
     return (
         <div>
-            <h1>Name: {dog.name}</h1>
-            <h2>Age: {dog.age}</h2>
-            <img src={dogImage} alt={`a cute dog named ${dog.name}`}></img>
+            <h1>Name: {dogData.name}</h1>
+            <h2>Age: {dogData.age}</h2>
+            <img src={dogImage} alt={`a cute dog named ${dogData.name}`}></img>
             <ul><h2>Facts:</h2> 
-                {dog.facts.map((fact,i) =>
+                {dogData.facts.map((fact,i) =>
                     <li key={i}>{fact}</li>
                 )}
             </ul>

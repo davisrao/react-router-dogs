@@ -32,6 +32,7 @@ function App() {
   }
 
   if(dogsData.length === 0){
+
     return (
       <h1>Loading...</h1>
     )
